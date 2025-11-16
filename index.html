@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mantorps VetBot AI Support</title>
+<link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            500: '#6366f1',
+                        },
+                        secondary: {
+                            500: '#8b5cf6',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-900 text-gray-100 min-h-screen">
+    <custom-header></custom-header>
+    
+    <main class="container mx-auto px-4 py-8 max-w-4xl">
+        <div class="bg-gray-800 rounded-xl shadow-lg p-6 mb-8">
+            <h1 class="text-3xl font-bold text-primary-500 mb-2">Mantorps VetBot AI Support</h1>
+            <p class="text-gray-400 mb-6">Your intelligent veterinary support assistant powered by Gemma 3</p>
+<div class="flex flex-col space-y-4">
+                <div class="bg-gray-700 p-4 rounded-lg">
+                    <div class="flex items-start space-x-3">
+                        <div class="bg-primary-500 p-2 rounded-full">
+                            <i data-feather="user" class="w-4 h-4"></i>
+                        </div>
+                        <div>
+                            <p class="font-medium">How can I help you today?</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="chat-container" class="space-y-4 max-h-[60vh] overflow-y-auto pr-2">
+                    <!-- Chat messages will appear here -->
+                </div>
+                
+                <div class="mt-4">
+                    <form id="chat-form" class="flex space-x-2">
+                        <input 
+                            type="text" 
+                            id="user-input" 
+                            placeholder="Type your question..." 
+                            class="flex-1 bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                            autocomplete="off"
+                        >
+                        <button 
+                            type="submit" 
+                            class="bg-primary-500 hover:bg-primary-600 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center"
+                        >
+                            <i data-feather="send" class="mr-2"></i> Send
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-gray-800 rounded-xl shadow-lg p-6">
+            <h2 class="text-xl font-bold text-secondary-500 mb-4">API Documentation</h2>
+            <div class="space-y-4">
+                <div class="bg-gray-700 p-4 rounded-lg">
+                    <h3 class="font-medium mb-2">CURL Request</h3>
+                    <pre class="bg-gray-900 p-3 rounded text-sm overflow-x-auto"><code>curl -X POST http://your-ollama-server/v1/chat/completions \
+-H "Content-Type: application/json" \
+-d '{
+    "model": "gemma:3b",
+    "messages": [
+        {"role": "system", "content": "You are a helpful customer support assistant."},
+        {"role": "user", "content": "Your customer question here"}
+    ]
+}'</code></pre>
+                </div>
+                
+                <div class="bg-gray-700 p-4 rounded-lg">
+                    <h3 class="font-medium mb-2">PDF Integration</h3>
+                    <p class="text-gray-400">Upload PDF documents to provide context for the AI assistant:</p>
+                    <div class="mt-3">
+                        <input type="file" id="pdf-upload" accept=".pdf" class="hidden">
+                        <label for="pdf-upload" class="bg-secondary-500 hover:bg-secondary-600 text-white px-4 py-2 rounded-lg font-medium transition-colors inline-flex items-center cursor-pointer">
+                            <i data-feather="upload" class="mr-2"></i> Upload PDF
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <custom-footer></custom-footer>
+    
+    <script src="components/header.js"></script>
+    <script src="components/footer.js"></script>
+    <script src="script.js"></script>
+    <script>
+        feather.replace();
+    </script>
+    <!-- Google Calendar Appointment Scheduling -->
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script>
+        function handleClientLoad() {
+            gapi.load('client:auth2', initClient);
+        }
+        
+        function initClient() {
+            gapi.client.init({
+                apiKey: 'YOUR_API_KEY',
+                clientId: 'YOUR_CLIENT_ID.apps.googleusercontent.com',
+                discoveryDocs: ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"],
+                scope: "https://www.googleapis.com/auth/calendar"
+            });
+        }
+    </script>
+</body>
+</html>
