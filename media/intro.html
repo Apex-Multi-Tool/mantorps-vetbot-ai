@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mantorps-VetBot-Ai Launcher</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+        .container {
+            text-align: center;
+        }
+        button {
+            padding: 20px 40px;
+            font-size: 18px;
+            background-color: #800080;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #9932cc;
+        }
+        .countdown {
+            font-size: 10em;
+            margin-top: 20px;
+            color: #800080;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <button id="startButton">Start Mantorps-VetBot-Ai!</button>
+    <div id="countdown" class="countdown" style="display: none;"></div>
+</div>
+
+<script>
+    document.getElementById('startButton').addEventListener('click', function() {
+        this.style.display = 'none';
+        startCountdown();
+    });
+
+    function startCountdown() {
+        let count = 5;
+        const countdownElement = document.getElementById('countdown');
+        countdownElement.style.display = 'block';
+
+        const interval = setInterval(() => {
+            countdownElement.textContent = count;
+            count--;
+
+            if (count < 0) {
+                clearInterval(interval);
+                window.location.href = 'https://mantorps-smadjursklinik.webnode.se/';
+            }
+        }, 1000);
+    }
+</script>
+</body>
+</html>
