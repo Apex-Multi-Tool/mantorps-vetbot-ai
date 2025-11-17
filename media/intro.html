@@ -53,14 +53,24 @@
         let count = 5;
         const countdownElement = document.getElementById('countdown');
         countdownElement.style.display = 'block';
+        countdownElement.style.color = '#800080';
 
         const interval = setInterval(() => {
-            countdownElement.textContent = count;
+            // show numbers 5..1
+            countdownElement.textContent = count > 0 ? count : '';
             count--;
 
             if (count < 0) {
                 clearInterval(interval);
-                window.location.href = 'https://mantorps-smadjursklinik.webnode.se/';
+                // show the blue starting message before redirecting
+                countdownElement.textContent = 'Starting Mantorp Vet-Bot Support';
+                countdownElement.style.color = 'blue';
+                countdownElement.style.fontSize = '2.5em';
+
+                // wait 1.5s so users can read the message, then redirect
+                setTimeout(() => {
+                    window.location.href = 'https://mantorps-smadjursklinik.webnode.se/';
+                }, 1500);
             }
         }, 1000);
     }
